@@ -7,51 +7,101 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      position: relative;
+      background: linear-gradient(to bottom right, #fefce8, #fafaf9);
+      overflow-x: hidden;
     }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url('gold-texture.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08; 
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+    }
+
     .gold-text {
-      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+      background: linear-gradient(90deg, #d4af37, #ffdf00, #d4af37);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: shine 3s linear infinite;
+      animation: shine 5s linear infinite;
     }
+
     @keyframes shine {
       to {
         background-position: -200% center;
       }
     }
+
+    .pulse-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #facc15aa;
+    }
+
+    .pulse-hover:active {
+      transform: scale(0.98);
+    }
   </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen text-white p-6">
-  <div class="mb-8">
-    <img src="gold-cover.jpg" alt="Portada GOLD" class="w-72 h-72 object-cover rounded-2xl shadow-xl border-4 border-yellow-500" />
-  </div>
 
-  <h1 class="text-4xl md:text-5xl font-extrabold gold-text mb-4 text-center">GOLD</h1>
-  <p class="text-xl text-gray-300 mb-2 text-center">Nuevo single de <span class="text-yellow-500">Fire in Alaska</span></p>
-  <p class="text-gray-400 text-center mb-6 italic">Muy pronto disponible</p>
+<body class="text-gray-800 flex flex-col items-center min-h-screen justify-center p-6 font-sans">
+  <div class="content flex flex-col items-center w-full max-w-md">
 
-  <a href="https://instagram.com/fireinalaska" target="_blank"
-     class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-xl transition duration-300 animate-bounce">
-    🔔 Síguenos para novedades
-  </a>
+    <header class="flex flex-col items-center mb-4">
+      <img src="logo-fireinalaska.png" alt="Logo Fire in Alaska" class="w-56 h-56 mb-2" />
+    </header>
 
-  <div class="mt-12 text-gray-500 text-sm text-center">
-    <p id="countdown" class="opacity-80">🔥 GOLD se acerca... 🔥</p>
+    <div class="mb-6">
+      <img src="gold-cover.jpg" alt="Portada GOLD"
+           class="w-80 h-80 object-cover rounded-xl shadow-lg border-4 border-yellow-400" />
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-extrabold gold-text mb-3 text-center">GOLD</h1>
+    <p class="text-lg text-gray-600 mb-2 text-center">Nuevo single de <span class="text-yellow-600 font-semibold">Fire in Alaska</span></p>
+    <p class="text-gray-500 text-center mb-6 italic">Muy pronto disponible</p>
+
+    <a href="https://instagram.com/fireinalaska" target="_blank"
+       class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 px-6 rounded-xl transition duration-300 shadow-md mb-6 pulse-hover">
+      🔔 Síguenos para novedades
+    </a>
+
+    <div class="flex space-x-6 mb-10">
+      <a href="https://instagram.com/fireinalaska" target="_blank" aria-label="Instagram">
+        <img src="instagram-icon.png" alt="Instagram" class="w-8 h-8 hover:scale-110 transition transform" />
+      </a>
+      <a href="https://tiktok.com/@fireinalaska" target="_blank" aria-label="TikTok">
+        <img src="tiktok-icon.png" alt="TikTok" class="w-8 h-8 hover:scale-110 transition transform" />
+      </a>
+      <a href="https://youtube.com/fireinalaska" target="_blank" aria-label="YouTube">
+        <img src="youtube-icon.png" alt="YouTube" class="w-8 h-8 hover:scale-110 transition transform" />
+      </a>
+    </div>
+
+    <div class="text-gray-600 text-sm text-center mb-16">
+      <p id="countdown" class="opacity-80 italic">✨ El oro más puro se está forjando... ✨</p>
+    </div>
+
   </div>
 
   <script>
     const phrases = [
-      "🔥 GOLD se acerca... 🔥",
-      "💿 Pre-save pronto disponible 💿",
-      "👑 GOLD: Fire in Alaska 👑"
+      "✨ El oro más puro se está forjando... ✨",
+      "👑 GOLD - Fire in Alaska 👑"
     ];
     let idx = 0;
     setInterval(() => {
       document.getElementById('countdown').innerText = phrases[idx];
       idx = (idx + 1) % phrases.length;
-    }, 3000);
+    }, 4000);
   </script>
 </body>
 </html>
