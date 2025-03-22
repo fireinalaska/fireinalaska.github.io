@@ -3,31 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nuevo Single - Mi Banda</title>
+  <title>GOLD - Fire in Alaska</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+    }
+    .gold-text {
+      background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+    }
+    @keyframes shine {
+      to {
+        background-position: -200% center;
+      }
+    }
+  </style>
 </head>
-<body class="bg-black text-white flex flex-col items-center min-h-screen justify-center p-4">
-  <!-- Portada del single -->
-  <img src="cover.jpg" alt="Portada del Single" class="w-64 h-64 object-cover rounded-2xl shadow-lg mb-6" />
+<body class="flex flex-col items-center justify-center min-h-screen text-white p-6">
+  <div class="mb-8">
+    <img src="gold-cover.jpg" alt="Portada GOLD" class="w-72 h-72 object-cover rounded-2xl shadow-xl border-4 border-yellow-500" />
+  </div>
 
-  <!-- Título -->
-  <h1 class="text-3xl font-bold text-center mb-2">🔥 Nuevo Single Disponible 🔥</h1>
-  <p class="text-lg text-gray-300 text-center mb-6">Escucha ya "Nombre del Single" en tu plataforma favorita.</p>
+  <h1 class="text-4xl md:text-5xl font-extrabold gold-text mb-4 text-center">GOLD</h1>
+  <p class="text-xl text-gray-300 mb-2 text-center">Nuevo single de <span class="text-yellow-500">Fire in Alaska</span></p>
+  <p class="text-gray-400 text-center mb-6 italic">Muy pronto disponible</p>
 
-  <!-- Botón de Spotify -->
-  <a href="https://open.spotify.com/track/tu-link" target="_blank"
-     class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl transition duration-300">
-    🎧 Escuchar en Spotify
+  <a href="https://instagram.com/fireinalaska" target="_blank"
+     class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-xl transition duration-300 animate-bounce">
+    🔔 Síguenos para novedades
   </a>
 
-  <!-- Redes sociales opcionales -->
-  <div class="mt-8 flex space-x-4">
-    <a href="https://instagram.com/tubanda" target="_blank" class="text-gray-400 hover:text-white text-2xl">
-      📸
-    </a>
-    <a href="https://youtube.com/tubanda" target="_blank" class="text-gray-400 hover:text-white text-2xl">
-      📺
-    </a>
+  <div class="mt-12 text-gray-500 text-sm text-center">
+    <p id="countdown" class="opacity-80">🔥 GOLD se acerca... 🔥</p>
   </div>
+
+  <script>
+    const phrases = [
+      "🔥 GOLD se acerca... 🔥",
+      "💿 Pre-save pronto disponible 💿",
+      "👑 GOLD: Fire in Alaska 👑"
+    ];
+    let idx = 0;
+    setInterval(() => {
+      document.getElementById('countdown').innerText = phrases[idx];
+      idx = (idx + 1) % phrases.length;
+    }, 3000);
+  </script>
 </body>
 </html>
